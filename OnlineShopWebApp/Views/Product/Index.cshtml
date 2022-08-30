@@ -1,0 +1,32 @@
+﻿@using OnlineShopWebApp.Models
+@model ProductViewModel
+
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@if (Model != null)
+{
+    <div class="col-6 card shadow-sm">
+            <img class="card-img-bottom" src="@Model.ImgPath">
+
+            <div class="card-body">
+                <a style="color:green">
+                    <h5>@Model.Name</h5>
+                </a>
+                <h6>Цена за 1 м.п. @Model.Cost руб.</h6>
+                <h6>@Model.Description</h6>
+                <h6>Товара в наличии осталось - @Model.AmountInDb шт.</h6>
+                <a class="btn btn-danger" href="/cart/add?ProductViewModelId=@Model.Id" role="button">Добавить в корзину</a>
+                <a class="btn btn-dark" href="https://localhost:5001/Home/index" role="button">Вернуться на главную страницу</a>
+            </div>
+        </div>
+}
+else
+{
+    <p>Продукт не найден</p>
+}
+
+

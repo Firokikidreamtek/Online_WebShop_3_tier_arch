@@ -1,0 +1,33 @@
+﻿@using ViewModels
+
+@model ProductViewModel
+
+@{
+    ViewData["Title"] = "Добавление нового продукта";
+}
+
+<div class="validation" asp-validation-summary="ModelOnly"></div>
+<div class="container align-content-center">
+    <div class="row text-center">
+        <div class="col-4 mx-auto">
+            <h2>Введите данные продукта</h2>
+            <form asp-area="admin" asp-action="addnewproduct" asp-controller="product">
+                <div class="mb-3">
+                    <input class="form-control" asp-for="Name" placeholder="Введите название продукта">
+                    <span asp-validation-for="Name"></span>
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" asp-for="Cost" placeholder="Введите стоимость продукта">
+                    <span asp-validation-for="Cost"></span>
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" asp-for="Description" placeholder="Введите описание продукта">
+                    <span asp-validation-for="Description"></span>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-outline-dark" asp-area="admin" asp-controller="product" asp-action="addnewproduct">Добавить новый продукт</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

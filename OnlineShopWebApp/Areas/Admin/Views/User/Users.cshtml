@@ -1,0 +1,46 @@
+﻿@using OnlineShopWebApp.Models
+
+@model List<UserViewModel>
+
+<div class="row text-center">
+
+    @await Html.PartialAsync("AdminMenu")
+
+    <div class="col-9">
+        <h3>Список пользователей</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Логин</th>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Телефон</th>
+                </tr>
+            </thead>
+
+            @for (var i = 0; i < Model.Count(); i++)
+            {
+                <tbody>
+                    <tr>
+                        <td>
+                            @(i+1)
+                        </td>
+                        <td>
+                            <a asp-area="admin" asp-controller="user" asp-action="Get" asp-route-userId="@Model[i].Id">@Model[i].Login</a>
+                        </td>
+                        <td>
+                            @Model[i].FirstName
+                        </td>
+                        <td>
+                            @Model[i].LastName
+                        </td>
+                        <td>
+                            @Model[i].Phone
+                        </td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+    </div>
+</div>
