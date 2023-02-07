@@ -4,13 +4,13 @@ using Entities;
 using System.Linq;
 using ViewModels;
 
-namespace Mappers
+namespace Mapper
 {
     public class MappingProfile : Profile
     {
         public MappingProfile()
         {
-            CreateMap<CartItemViewModel , CartItem> ().ReverseMap();
+            CreateMap<CartItemViewModel, CartItem>().ReverseMap();
             CreateMap<DeliveryInfo, DeliveryInfoModelView>().ReverseMap();
             CreateMap<Product, ProductViewModel>().ReverseMap();
             CreateMap<Order, OrderViewModel>().ReverseMap();

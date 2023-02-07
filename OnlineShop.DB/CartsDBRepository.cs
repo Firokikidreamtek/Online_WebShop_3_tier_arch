@@ -41,8 +41,7 @@ namespace OnlineShop.DB
         public CartEntity TryGetByUserName(string userName)
         {
             var user = _userManager.Users.FirstOrDefault(x => x.UserName == userName);
-            var carts = _databaseContext.Carts.Where(x => x.IsDeleted == false).AsNoTracking();
-            var necessaryCart = carts.FirstOrDefault(x => x.UserId == user.Id);
+            var necessaryCart = AllCarts().FirstOrDefault(x => x.UserId == user.Id);
             return necessaryCart;
         }
 

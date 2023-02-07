@@ -41,7 +41,7 @@ namespace OnlineShop.BL
 
         public Product TryGetById(int productId)
         {
-            return _mapper.Map<Product>(_productBase.TryGetById(productId));
+            return _mapper.Map<Product>(_productBase.AllProducts().FirstOrDefault(x => x.Id == productId));
         }
     }
 }

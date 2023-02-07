@@ -8,7 +8,7 @@ namespace OnlineShop.DB
     {
         public IdentityContext(DbContextOptions<IdentityContext> options) : base(options)
         {
-            //Database.OpenConnection(); 
+            //Database.EnsureDeleted();
             Database.EnsureCreated();
             //Database.Migrate();
         }

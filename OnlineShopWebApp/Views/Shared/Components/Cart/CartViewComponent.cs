@@ -6,7 +6,7 @@ using OnlineShop.BL;
 using System.Linq;
 using ViewModels;
 
-namespace OnlineShopWebApp.Views.Shared.ViewComponents.CartViewComponents
+namespace OnlineShopWebApp.Views.Shared.Components.Cart
 {
     public class CartViewComponent : ViewComponent
     {
@@ -25,7 +25,7 @@ namespace OnlineShopWebApp.Views.Shared.ViewComponents.CartViewComponents
         public IViewComponentResult Invoke()
         {
             var userName = User.Identity.Name;
-            if(userName == null)
+            if (userName == null)
             {
                 var user = _userManager.Users.FirstOrDefault(x => x.UserName.Contains("user"));
                 var cart = _cartServicies.TryGetByUserId(user.Id);

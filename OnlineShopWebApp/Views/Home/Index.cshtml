@@ -3,16 +3,30 @@
 <div class="row">
     @foreach (ProductViewModel p in Model)
     {
-        <div class="col-3 card shadow">
-            <img class="card-card-img-top" src="@p.ImgPath">
-            <div class="card-body">
-                <a style="color:black" asp-area="" asp-controller="product" asp-action="index" asp-route-id="@p.Id">
-                    <h5>@p.Name</h5>
-                </a>
-                <h5>@p.Cost руб.</h5>
-                <a class="btn btn-dark" asp-area="" asp-controller="cart" asp-action="add" asp-route-productId="@p.Id" role="button">
-                    Добавить в корзину
-                </a>
+        <div class="col-4">
+            <div class="p-lg-0 my-lg-3 border">
+                <div class="card">
+                    <img src="@p.ImgPath" class="card-img-top">
+                    <div class="card-body">
+                        <a class="card-title text-success" asp-area="" asp-controller="product" asp-action="index" asp-route-id="@p.Id">
+                            <h5>@p.Name</h5>
+                        </a>
+                        <p class="card-text">@Html.Raw(p.Description)</p>
+                        <div class="row">
+                            <div class="col pt-1">
+                                <span style="font-size:23px;">@string.Format("{0:c}", p.Cost)</span>
+                            </div>
+                            <div class="col pt-1">
+                                <a class="btn btn-success" asp-area="" asp-controller="cart" asp-action="add" asp-route-productId="@p.Id" width>
+                                    <i class="fas fa-shopping-cart"></i>
+                                </a>
+                                
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
             </div>
         </div>
     }

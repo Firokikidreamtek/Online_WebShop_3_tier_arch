@@ -11,7 +11,7 @@ using OnlineShop.Db;
 using OnlineShop.DB;
 using Serilog;
 using System;
-using Mappers;
+using Mapper;
 
 namespace OnlineShopWebApp
 {
@@ -35,11 +35,11 @@ namespace OnlineShopWebApp
 
             services.AddDbContext<DatabaseContext>(options =>
             {
-                options.UseSqlite(connection);
+                options.UseSqlServer(connection);
             });
 
             services.AddDbContext<IdentityContext>(options =>
-           options.UseSqlite(connection));
+           options.UseSqlServer(connection));
 
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<IdentityContext>();

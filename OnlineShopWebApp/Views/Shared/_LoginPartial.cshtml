@@ -1,0 +1,24 @@
+﻿@using OnlineShop.DB
+<ul class="navbar-nav">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <li class="nav-item">
+            <a class="nav-link" href="#">Hello @User.Identity.Name</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-action="Logout" asp-controller="Authorization">Выйти</a>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link" asp-action="Authorize" asp-controller="Authorization">Войти</a>
+        </li>
+    }
+    @if (User.IsInRole(Const.AdminRoleName))
+    {
+        <li class="nav-item">
+            <a class="btn btn-dark" asp-area="admin" asp-controller="Order" asp-action="Orders">Админ панель</a>
+        </li>
+    }
+</ul>

@@ -20,12 +20,12 @@ namespace OnlineShop.BL
 
         public void Add(Order order)
         {
-            _orderBase.Add(_mapper.Map<OrderEntity>(order));
+            _orderBase.Add(order);
         }
 
-        public List<Order> AllOrders()
+        public IEnumerable<Order> AllOrders()
         {
-            return _orderBase.AllOrders().Select(x => _mapper.Map<Order>(x)).ToList();
+            return _orderBase.AllOrders().Select(x => _mapper.Map<Order>(x));
         }
 
         public void UpdateOrderStatus(int orderId, OrderStatus status)

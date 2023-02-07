@@ -7,15 +7,15 @@ namespace Entities
     {
         public int Id { get; set; }
         public DeliveryInfoEntity DeliveryInfo { get; set; }
-        public List<CartItemEntity>? Items { get; set; }
+        public CartEntity Cart { get; set; }
         public OrderStatusEntity Status { get; set; }
         public DateTime CreatedDate { get; set; }
         public decimal? TotalCostWithDiscount { get; set; }
 
-        public OrderEntity(List<CartItemEntity> items, DeliveryInfoEntity deliveryInfo)
+        public OrderEntity(CartEntity cart, DeliveryInfoEntity deliveryInfo)
         {
             CreatedDate = DateTime.Now;
-            Items = items;
+            Cart = cart;
             DeliveryInfo = deliveryInfo;
             Status = OrderStatusEntity.Processing;
         }

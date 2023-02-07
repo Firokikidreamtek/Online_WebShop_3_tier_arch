@@ -16,15 +16,18 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
         private readonly IOrderServicies _orderServicies;
         private readonly IMapper _mapper;
 
-        public OrderController(IOrderServicies orderServicies)
+        public OrderController(IOrderServicies orderServicies, IMapper mapper)
         {
             _orderServicies = orderServicies;
+            _mapper = mapper;
         }
 
         public IActionResult Orders()
         {
-            var orders = _orderServicies.AllOrders().Select(x => _mapper.Map<OrderViewModel>(x));
-            return View(orders);
+            var orders = _orderServicies.AllOrders();
+            var firstOrder = orders.FirstOrDefault();
+            var orderViewModel = _mapper.Map<OrderViewModel>(firstOrder);
+            return View(orderViewModel);
         }
 
         public IActionResult GetOrder(int orderId)

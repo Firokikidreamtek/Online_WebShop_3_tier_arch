@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using OnlineShop.BL;
+using System.Collections.Generic;
 using System.Linq;
 using ViewModels;
 
@@ -28,8 +29,8 @@ namespace OnlineShopWebApp.Controllers
         private void AddNewOrder(DeliveryInfoModelView deliveryInfo)
         {
             var existingUser = _userManager.FindByNameAsync(User.Identity.Name).Result;
-            var cart = _cartServicies.TryGetByUserId(existingUser.Id);
-            var order = new Order(cart.Items, _mapper.Map<DeliveryInfo>(deliveryInfo));
+            var cart = _cartServicies.AllCarts().FirstOrDefault(x => x.UserId == existingUser.Id);
+            var order = new Order(cart, _mapper.Map<DeliveryInfo>(deliveryInfo));
 
             _orderServicies.Add(order);
         }

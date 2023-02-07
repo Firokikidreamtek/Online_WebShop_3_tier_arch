@@ -1,23 +1,30 @@
-﻿using Entities;
+﻿using AutoMapper;
+using Domains;
+using Entities;
 using Microsoft.EntityFrameworkCore;
 using OnlineShop.Db;
-using OnlineShop.DB;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace OnlineShopWebApp
+namespace OnlineShop.DB
 {
     public class OrdersDBRepository : IOrderBase
     {
 
         private readonly DatabaseContext _databaseContext;
         private readonly IProductBase _productBase;
+        private readonly ICartBase _cartBase;
+        private readonly IMapper _mapper;
 
 
-        public OrdersDBRepository(DatabaseContext databaseContext, IProductBase productBase)
+
+
+        public OrdersDBRepository(DatabaseContext databaseContext, IProductBase productBase, ICartBase cartBase, IMapper mapper)
         {
             _databaseContext = databaseContext;
             _productBase = productBase;
+            _cartBase = cartBase;
+            _mapper = mapper;
         }
 
         public int NextOrderId()
@@ -34,9 +41,9 @@ namespace OnlineShopWebApp
             }
         }
 
-        public List<OrderEntity> AllOrders()
+        public IEnumerable<OrderEntity> AllOrders()
         {
-            var orders = _databaseContext.Orders.Include(x => x.Items).ThenInclude(x => x.Product).Include(x => x.DeliveryInfo).ToList();
+            var orders = _databaseContext.Orders.Include(x => x.Cart.Items).ThenInclude(x => x.Product).Include(x => x.DeliveryInfo).AsNoTracking();
             if (orders.Any())
             {
                 return orders;
@@ -55,17 +62,20 @@ namespace OnlineShopWebApp
             _databaseContext.SaveChanges();
         }
 
-        public void Add(OrderEntity order)
+        public void Add(Order order)
         {
-            _databaseContext.Entry(order).State = EntityState.Added;
+            var cart = _cartBase.TryGetByUserId(order.Cart.Items.Any() ? order.Cart.UserId : null);
 
-            foreach (var item in order.Items)
+            var newOrder = _mapper.Map<OrderEntity>(order);
+            newOrder.Cart = cart;
+            _databaseContext.Orders.Add(newOrder);
+            _databaseContext.SaveChanges();
+
+            foreach (var item in order.Cart.Items)
             {
                 var productInDB = _productBase.TryGetById(item.Product.Id);
                 productInDB.AmountInDb = productInDB.AmountInDb - item.Amount;
             }
-
-            _databaseContext.Orders.Add(order);
             _databaseContext.SaveChanges();
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Domains
 {
@@ -7,15 +8,22 @@ namespace Domains
     {
         public int Id { get; set; }
         public DeliveryInfo DeliveryInfo { get; set; }
-        public List<CartItem> Items { get; set; }
+        public Cart Cart { get; set; }
         public OrderStatus Status { get; set; }
         public DateTime CreatedDate { get; set; }
-        public decimal? TotalCostWithDiscount { get; set; }
+        public decimal? TotalCostWithDiscount
+        {
+            get => Cart.Items.Sum(x => x.Product.Cost);
+            set
+            {
+                TotalCostWithDiscount = value;
+            }
+        }
 
-        public Order(List<CartItem> items, DeliveryInfo deliveryInfo)
+        public Order(Cart cart, DeliveryInfo deliveryInfo)
         {
             CreatedDate = DateTime.Now;
-            Items = items;
+            Cart = cart;
             DeliveryInfo = deliveryInfo;
             Status = OrderStatus.Processing;
         }
