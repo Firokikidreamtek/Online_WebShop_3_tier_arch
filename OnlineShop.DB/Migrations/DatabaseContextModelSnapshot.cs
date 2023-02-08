@@ -144,7 +144,7 @@ namespace OnlineShop.DB.Migrations
                     b.HasData(
                         new
                         {
-                            Id = -1,
+                            Id = 1,
                             AmountInDb = 6,
                             Cost = 610m,
                             Description = "Ширина 135 см, Плотность от 239 г/м2, Состав: вискоза - 60%, лён - 30%, хлопок - 10%, Производитель - Китай",
@@ -153,7 +153,7 @@ namespace OnlineShop.DB.Migrations
                         },
                         new
                         {
-                            Id = -2,
+                            Id = 2,
                             AmountInDb = 3,
                             Cost = 4200m,
                             Description = "Ширина 120 см, Состав: эластан, кашемир, Производитель - Италия",
@@ -162,7 +162,7 @@ namespace OnlineShop.DB.Migrations
                         },
                         new
                         {
-                            Id = -3,
+                            Id = 3,
                             AmountInDb = 8,
                             Cost = 2700m,
                             Description = "Ширина 135 см, Состав: шёлк - 100%, Производитель - Италия",
@@ -171,7 +171,7 @@ namespace OnlineShop.DB.Migrations
                         },
                         new
                         {
-                            Id = -4,
+                            Id = 4,
                             AmountInDb = 9,
                             Cost = 5700m,
                             Description = "Ширина 120 см, Состав: эластан, кашемир, Производитель - Италия",

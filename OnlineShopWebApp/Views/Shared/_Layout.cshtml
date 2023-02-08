@@ -19,6 +19,12 @@
         </main>
     </div>
 
+
+    <div class="container-fluid">
+        <main role="main" class="pb-5">
+            @RenderBody()
+        </main>
+    </div>
     @await Html.PartialAsync("Footer")
     
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

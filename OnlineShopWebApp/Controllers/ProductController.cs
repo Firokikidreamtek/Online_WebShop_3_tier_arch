@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using OnlineShop.BL;
+using System.Linq;
 using ViewModels;
 
 namespace OnlineShopWebApp.Controllers
@@ -18,7 +19,7 @@ namespace OnlineShopWebApp.Controllers
 
         public IActionResult Index(int id)
         {
-            var product = _mapper.Map<ProductViewModel>(_productServicies.TryGetById(id));
+            var product = _mapper.Map<ProductViewModel>(_productServicies.AllProducts().FirstOrDefault(x => x.Id == id));
             return View(product);
         }
 

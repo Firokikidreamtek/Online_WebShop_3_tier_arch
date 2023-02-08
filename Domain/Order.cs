@@ -11,14 +11,7 @@ namespace Domains
         public Cart Cart { get; set; }
         public OrderStatus Status { get; set; }
         public DateTime CreatedDate { get; set; }
-        public decimal? TotalCostWithDiscount
-        {
-            get => Cart.Items.Sum(x => x.Product.Cost);
-            set
-            {
-                TotalCostWithDiscount = value;
-            }
-        }
+        public decimal? TotalCostWithDiscount{ get; set; }
 
         public Order(Cart cart, DeliveryInfo deliveryInfo)
         {

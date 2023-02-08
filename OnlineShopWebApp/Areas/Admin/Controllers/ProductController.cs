@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineShop.BL;
 using OnlineShop.DB;
+using System.Collections.Generic;
 using System.Linq;
 using ViewModels;
 
@@ -24,7 +25,7 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
 
         public IActionResult Products()
         {
-            var products = _productServicies.AllProducts().Select(x => _mapper.Map<ProductViewModel>(x));
+            var products = _productServicies.AllProducts().Select(x => _mapper.Map<ProductViewModel>(x)).OrderBy(x => x.Id);
             return View(products);
         }
 
@@ -51,16 +52,16 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult EditProduct(int productId)
         {
-            var product = _productServicies.TryGetById(productId);
-            return View(product);
+            var product = _productServicies.AllProducts().FirstOrDefault(x => x.Id == productId);
+            return View(_mapper.Map<ProductViewModel>(product));
         }
 
         [HttpPost]
-        public IActionResult EditProduct(Product product)
+        public IActionResult EditProduct(ProductViewModel product)
         {
             if (ModelState.IsValid)
             {
-                _productServicies.Edit(product);
+                _productServicies.Edit(_mapper.Map<Product>(product));
                 return RedirectToAction("products", "product");
             }
             else

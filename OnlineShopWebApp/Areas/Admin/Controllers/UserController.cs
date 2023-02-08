@@ -87,7 +87,7 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
 
                 userToEdit.FirstName = user.FirstName;
                 userToEdit.LastName = user.LastName;
-                userToEdit.PhoneNumber = user.Phone;
+                userToEdit.PhoneNumber = user.PhoneNumber;
 
                 var result = _userManager.UpdateAsync(userToEdit).Result;
                 return RedirectToAction("Get", "User", new { userId = user.Id });

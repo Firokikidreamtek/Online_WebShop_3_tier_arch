@@ -9,7 +9,7 @@ namespace ViewModels
         public string Login { get; set; }
         public string FirstName { get; set; } = "Please, fill this field";
         public string LastName { get; set; } = "Please, fill this field";
-        public string Phone { get; set; } = "Please, fill this field";
+        public string PhoneNumber { get; set; } = "Please, fill this field";
         public string Password { get; set; }
 
         public UserViewModel() { }

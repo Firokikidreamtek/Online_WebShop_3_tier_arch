@@ -10,7 +10,7 @@ using OnlineShop.DB;
 namespace OnlineShop.DB.Migrations.Identity
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20230207112609_NextIdent")]
+    [Migration("20230207161046_NextIdent")]
     partial class NextIdent
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

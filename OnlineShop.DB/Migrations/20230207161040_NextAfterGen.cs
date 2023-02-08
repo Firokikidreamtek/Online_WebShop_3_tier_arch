@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace OnlineShop.DB.Migrations
 {
-    public partial class NextGen : Migration
+    public partial class NextAfterGen : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -113,10 +113,10 @@ namespace OnlineShop.DB.Migrations
                 columns: new[] { "Id", "AmountInDb", "Cost", "Description", "ImgPath", "Name" },
                 values: new object[,]
                 {
-                    { -1, 6, 610m, "Ширина 135 см, Плотность от 239 г/м2, Состав: вискоза - 60%, лён - 30%, хлопок - 10%, Производитель - Китай", "/img/linen_blue.jpg", "Лён однотонный, голубой" },
-                    { -2, 3, 4200m, "Ширина 120 см, Состав: эластан, кашемир, Производитель - Италия", "/img/cashemir_vi.jpg", "Кашемировый трикотаж, фиолетовый" },
-                    { -3, 8, 2700m, "Ширина 135 см, Состав: шёлк - 100%, Производитель - Италия", "/img/Silk_green.jpg", "Шёлк, бильярдный цвет" },
-                    { -4, 9, 5700m, "Ширина 120 см, Состав: эластан, кашемир, Производитель - Италия", "/img/cashemir_li.jpg", "Кашемир, лиловый" }
+                    { 1, 6, 610m, "Ширина 135 см, Плотность от 239 г/м2, Состав: вискоза - 60%, лён - 30%, хлопок - 10%, Производитель - Китай", "/img/linen_blue.jpg", "Лён однотонный, голубой" },
+                    { 2, 3, 4200m, "Ширина 120 см, Состав: эластан, кашемир, Производитель - Италия", "/img/cashemir_vi.jpg", "Кашемировый трикотаж, фиолетовый" },
+                    { 3, 8, 2700m, "Ширина 135 см, Состав: шёлк - 100%, Производитель - Италия", "/img/Silk_green.jpg", "Шёлк, бильярдный цвет" },
+                    { 4, 9, 5700m, "Ширина 120 см, Состав: эластан, кашемир, Производитель - Италия", "/img/cashemir_li.jpg", "Кашемир, лиловый" }
                 });
 
             migrationBuilder.CreateIndex(

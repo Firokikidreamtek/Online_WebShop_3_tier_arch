@@ -9,11 +9,10 @@
     <div class="row text-center">
         <div class="col-4 mx-auto">
             <h2>Edit user data</h2>
-            <form asp-area="dmin" asp-controller="User" asp-action="Edit">
+            <form asp-area="admin" asp-controller="User" asp-action="Edit">
                 <div class="validation" asp-validation-summary="All"></div>
                 <div class="mb-3">
                     <input name="Id" hidden value="@Model.Id" />
-                    <input name="Password" hidden value="@Model.Password" />
                 </div>
                 <div class="mb-3">
                     <label class="form-label text-muted" asp-for="FirstName">First name</label>
@@ -26,9 +25,9 @@
                     <span asp-validation-for="LastName"></span>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label text-muted" asp-for="Phone">Phone</label>
-                    <input class="form-control form-control-sm" asp-for="Phone" value="@Model.Phone" />
-                    <span asp-validation-for="Phone"></span>
+                    <label class="form-label text-muted" asp-for="PhoneNumber">Phone</label>
+                    <input class="form-control form-control-sm" asp-for="PhoneNumber" value="@Model.PhoneNumber" />
+                    <span asp-validation-for="PhoneNumber"></span>
                 </div>
                 <div class="mb-3">
                     <label class="form-label text-muted" asp-for="Login">Login</label>

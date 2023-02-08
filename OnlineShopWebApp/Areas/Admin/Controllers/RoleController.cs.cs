@@ -31,8 +31,6 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult AddRole(IdentityRole role)
         {
-
-
             if (role != null)
             {
                 if (roleManager.FindByNameAsync(role.Name).Result != null)

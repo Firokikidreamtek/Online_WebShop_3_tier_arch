@@ -40,7 +40,7 @@ namespace OnlineShop.DB
 
         public void Edit(ProductEntity ProductEntity)
         {
-            var existingProduct = AllProducts().FirstOrDefault(x => x.Id == ProductEntity.Id);
+            var existingProduct = TryGetById(ProductEntity.Id);
             existingProduct.Name = ProductEntity.Name;
             existingProduct.Description = ProductEntity.Description;
             existingProduct.Cost = ProductEntity.Cost;

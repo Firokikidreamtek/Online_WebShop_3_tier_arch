@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineShop.BL;
 using OnlineShop.DB;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using ViewModels;
 
@@ -24,9 +26,7 @@ namespace OnlineShopWebApp.Areas.Admin.Controllers
 
         public IActionResult Orders()
         {
-            var orders = _orderServicies.AllOrders();
-            var firstOrder = orders.FirstOrDefault();
-            var orderViewModel = _mapper.Map<OrderViewModel>(firstOrder);
+            var orderViewModel = _mapper.Map<IEnumerable<OrderViewModel>>(_orderServicies.AllOrders());
             return View(orderViewModel);
         }
 
